@@ -33,10 +33,13 @@ public class ArcadeApp extends Application {
 	 */
 	BorderPane openingStage = new BorderPane();
 	
+	
     @Override    
     public void start(Stage stage) {  
+    	
+    		openingStage.setPrefSize(800.00, 800.00);
     		
-    	/*
+    		/*
 		 * Creates Toolbar for top of opening screen
 		 * 
 		 */
@@ -62,18 +65,21 @@ public class ArcadeApp extends Application {
 		 */
 		openingStage.setStyle("-fx-background-color: #dda0dd;");
 		openingStage.setBottom(color);
+		openingStage.setTop(toolbar);
 		openingStage.setRight(color2);
 		openingStage.setLeft(color3);
 		HBox hbox = addHBox();
 		openingStage.setCenter(hbox);
-		openingStage.setTop(toolbar);
+		hbox.prefHeightProperty().bind(openingStage.heightProperty());
+		
     		
     		Group group = new Group(); // main container 
     		group.getChildren().add(openingStage);
     		Scene scene = new Scene(group);        
     		stage.setTitle("Csci1302-Arcade!!");         
     		stage.setScene(scene);         
-    		stage.sizeToScene();         
+    		stage.sizeToScene();    
+    		stage.centerOnScreen();
     		stage.show(); 
     		
     		// the group must request input focus to receive key events
